@@ -21,7 +21,7 @@ void setup(void) {
 } 
 
 void loop(void) {
-  delay(100);
+  
   if (radio.available()) {
     bool done = false;
     while (!done) {
