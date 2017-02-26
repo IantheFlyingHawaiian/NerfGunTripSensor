@@ -56,6 +56,7 @@ void setup(void) {
 
 void loop(void) {
 
+//With PNG not Working
   //Send out Triggers
   digitalWrite(trigPin, LOW);  // Added this line
   delayMicroseconds(2); // Added this line
@@ -68,11 +69,12 @@ void loop(void) {
   distance = (duration/2) / 29.1;
   
   if (digitalRead(SW1) == HIGH) {
-      
+      if (distance >= avg + 40 || distance <= avg - 40) {
         Serial.println("Sensor TRIGGERED");
           msg[0] = 111;
           radio.write(msg, 1);
           delay(10);
+      }
   }
 
   //Rest average distance of sensor
@@ -87,7 +89,6 @@ void loop(void) {
   Serial.print("Distance AVG: ");
   Serial.print(avg);
   Serial.println(" cm");
-  //delay(40);
 }
 
 
